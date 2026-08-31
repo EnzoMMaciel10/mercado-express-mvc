@@ -1,8 +1,8 @@
-# CP4 Parte 2 - Mercado Express
+# Mercado Express MVC
 
 Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC usando Spring Boot, Thymeleaf, Spring Security, Spring Data JPA e banco de dados Oracle.
 
-## Integrante
+## Integrantes
 
 - Nome: Enzo Monteiro Maciel
 - RM: RM563734
@@ -127,6 +127,12 @@ Cp4Parte2MvcApplication
 http://localhost:8080
 ```
 
+## Prints da aplicação
+
+Os prints da configuração do Spring Initializr e das telas da aplicação estão disponíveis no arquivo:
+
+[Ver PDF com os prints](prints/prints-mercado-express.pdf)
+
 ## Estrutura do projeto
 
 ```text
@@ -160,6 +166,7 @@ src/main/resources
 │       └── detalhes.html
 └── application.properties
 ```
+
 
 ## Segurança
 
