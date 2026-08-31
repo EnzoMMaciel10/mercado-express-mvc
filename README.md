@@ -4,8 +4,20 @@ Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC us
 
 ## Integrante
 
-- Nome: SEU NOME AQUI
+- Nome: Enzo Monteiro Maciel
 - RM: RM563734
+
+- Nome: Matheus de Almeida Sousa
+- RM: RM563557
+
+- Nome: Paulo Estalise
+- RM: RM563811
+
+- Nome: Gabriel Bebé Silva
+- RM: RM562012
+
+- Nome: Emanuel Italo
+- RM: RM561337
 
 ## Tecnologias utilizadas
 
@@ -94,7 +106,7 @@ A senha não deve ser publicada no GitHub.
 1. Clonar o repositório:
 
 ```bash
-git clone LINK_DO_REPOSITORIO_AQUI
+git clone https://github.com/EnzoMMaciel10/mercado-express-mvc.git
 ```
 
 2. Abrir o projeto no IntelliJ IDEA.
