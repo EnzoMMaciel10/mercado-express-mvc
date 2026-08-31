@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="topo">
+    <nav class="nav">
+        <a class="logo" th:href="@{/}">Mercado Express</a>
+        <div class="links">
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/mercado}">Produtos</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container pequeno">
+    <section class="card">
+        <h1>Login</h1>
+        <p class="texto">Acesse para cadastrar, editar e excluir produtos.</p>
+
+        <div class="alerta erro" th:if="${param.error}">
+            Usuário ou senha inválidos.
+        </div>
+
+        <div class="alerta sucesso" th:if="${param.logout}">
+            Logout realizado com sucesso.
+        </div>
+
+        <form th:action="@{/login}" method="post" class="formulario">
+            <div class="campo">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="admin">
+            </div>
+
+            <div class="campo">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="123456">
+            </div>
+
+            <button class="botao principal cheio" type="submit">Entrar</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="topo">
+    <nav class="nav">
+        <a class="logo" th:href="@{/}">Mercado Express</a>
+        <div class="links">
+            <a th:href="@{/mercado}">Produtos</a>
+            <a th:href="@{/mercado/novo}">Cadastrar</a>
+            <a th:href="@{/login}">Login</a>
+        </div>
+    </nav>
+</header>
+
+<main class="hero">
+    <section class="hero-conteudo">
+        <p class="tag">CP4 Java Advanced - Parte 2</p>
+        <h1>Sistema Web MVC para controle de produtos</h1>
+        <p>
+            Aplicação desenvolvida com Spring MVC, Thymeleaf, Spring Security,
+            Spring Data JPA e banco Oracle.
+        </p>
+        <div class="acoes">
+            <a class="botao principal" th:href="@{/mercado}">Ver produtos</a>
+            <a class="botao secundario" th:href="@{/mercado/novo}">Cadastrar produto</a>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

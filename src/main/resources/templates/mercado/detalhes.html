@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes - Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="topo">
+    <nav class="nav">
+        <a class="logo" th:href="@{/}">Mercado Express</a>
+        <div class="links">
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/mercado}">Produtos</a>
+            <a th:href="@{/mercado/novo}">Cadastrar</a>
+            <form th:action="@{/logout}" method="post" class="logout">
+                <button type="submit">Sair</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main class="container pequeno">
+    <section class="card">
+        <p class="tag">Detalhes do produto</p>
+        <h1 th:text="${mercado.nome}">Nome do produto</h1>
+
+        <dl class="detalhes">
+            <div>
+                <dt>Tipo</dt>
+                <dd th:text="${mercado.tipo}">Alimento</dd>
+            </div>
+
+            <div>
+                <dt>Setor</dt>
+                <dd th:text="${mercado.setor}">Mercearia</dd>
+            </div>
+
+            <div>
+                <dt>Tamanho</dt>
+                <dd th:text="${mercado.tamanho}">5kg</dd>
+            </div>
+
+            <div>
+                <dt>Preço</dt>
+                <dd th:text="${#numbers.formatCurrency(mercado.preco)}">R$ 10,00</dd>
+            </div>
+        </dl>
+
+        <div class="acoes">
+            <a class="botao principal" th:href="@{/mercado/editar/{id}(id=${mercado.id})}">Editar</a>
+            <a class="botao secundario" th:href="@{/mercado}">Voltar</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

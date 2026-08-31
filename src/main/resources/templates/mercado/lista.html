@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos - Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="topo">
+    <nav class="nav">
+        <a class="logo" th:href="@{/}">Mercado Express</a>
+        <div class="links">
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/mercado}">Produtos</a>
+            <a th:href="@{/mercado/novo}">Cadastrar</a>
+            <a th:href="@{/login}">Login</a>
+            <form th:action="@{/logout}" method="post" class="logout">
+                <button type="submit">Sair</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="cabecalho-pagina">
+        <div>
+            <p class="tag">CRUD de produtos</p>
+            <h1>Produtos cadastrados</h1>
+        </div>
+        <a class="botao principal" th:href="@{/mercado/novo}">Novo produto</a>
+    </section>
+
+    <section class="card">
+        <div class="alerta sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
+        <div class="alerta erro" th:if="${erro}" th:text="${erro}"></div>
+
+        <form th:action="@{/mercado}" method="get" class="busca">
+            <input type="text" name="busca" placeholder="Buscar por nome" th:value="${busca}">
+            <button class="botao secundario" type="submit">Buscar</button>
+        </form>
+
+        <div class="tabela-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Setor</th>
+                    <th>Tamanho</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.isEmpty(mercados)}">
+                    <td colspan="6" class="vazio">Nenhum produto cadastrado.</td>
+                </tr>
+                <tr th:each="mercado : ${mercados}">
+                    <td th:text="${mercado.nome}">Arroz</td>
+                    <td th:text="${mercado.tipo}">Alimento</td>
+                    <td th:text="${mercado.setor}">Mercearia</td>
+                    <td th:text="${mercado.tamanho}">5kg</td>
+                    <td th:text="${#numbers.formatCurrency(mercado.preco)}">R$ 10,00</td>
+                    <td class="acoes-tabela">
+                        <a th:href="@{/mercado/detalhes/{id}(id=${mercado.id})}">Detalhes</a>
+                        <a th:href="@{/mercado/editar/{id}(id=${mercado.id})}">Editar</a>
+                        <form th:action="@{/mercado/excluir/{id}(id=${mercado.id})}" method="post"
+                              onsubmit="return confirm('Deseja excluir este produto?');">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

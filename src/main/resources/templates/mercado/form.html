@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo} + ' - Mercado Express'">Formulário - Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="topo">
+    <nav class="nav">
+        <a class="logo" th:href="@{/}">Mercado Express</a>
+        <div class="links">
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/mercado}">Produtos</a>
+            <form th:action="@{/logout}" method="post" class="logout">
+                <button type="submit">Sair</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main class="container pequeno">
+    <section class="card">
+        <h1 th:text="${titulo}">Novo produto</h1>
+
+        <form th:action="@{${acao}}" th:object="${mercado}" method="post" class="formulario">
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" th:field="*{nome}" placeholder="Ex: Arroz integral">
+                <span class="erro-campo" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+            </div>
+
+            <div class="campo">
+                <label for="tipo">Tipo</label>
+                <input type="text" id="tipo" th:field="*{tipo}" placeholder="Ex: Alimento">
+                <span class="erro-campo" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+            </div>
+
+            <div class="campo">
+                <label for="setor">Setor</label>
+                <input type="text" id="setor" th:field="*{setor}" placeholder="Ex: Mercearia">
+                <span class="erro-campo" th:if="${#fields.hasErrors('setor')}" th:errors="*{setor}"></span>
+            </div>
+
+            <div class="campo">
+                <label for="tamanho">Tamanho</label>
+                <input type="text" id="tamanho" th:field="*{tamanho}" placeholder="Ex: 5kg">
+                <span class="erro-campo" th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></span>
+            </div>
+
+            <div class="campo">
+                <label for="preco">Preço</label>
+                <input type="number" step="0.01" min="0.01" id="preco" th:field="*{preco}" placeholder="Ex: 25.90">
+                <span class="erro-campo" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
+            </div>
+
+            <div class="acoes">
+                <button class="botao principal" type="submit">Salvar</button>
+                <a class="botao secundario" th:href="@{/mercado}">Cancelar</a>
+            </div>
+        </form>
+    </section>
+</main>
+</body>
+</html>
