@@ -2,22 +2,21 @@
 
 Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC usando Spring Boot, Thymeleaf, Spring Security, Spring Data JPA e banco de dados Oracle.
 
+## Links do projeto
+
+- Repositório: https://github.com/EnzoMMaciel10/mercado-express-mvc
+- Deploy Render: https://mercado-express-mvc-0zk8.onrender.com
+- Prints: [prints/prints-mercado-express.pdf](prints/prints-mercado-express.pdf)
+
+> Observação: o deploy está em uma instância gratuita do Render. Após períodos de inatividade, a primeira abertura pode demorar alguns segundos.
+
 ## Integrantes
 
-- Nome: Enzo Monteiro Maciel
-- RM: RM563734
-
-- Nome: Matheus de Almeida Sousa
-- RM: RM563557
-
-- Nome: Paulo Estalise
-- RM: RM563811
-
-- Nome: Gabriel Bebé Silva
-- RM: RM562012
-
-- Nome: Emanuel Italo
-- RM: RM561337
+- Enzo Monteiro Maciel - RM563734
+- Matheus de Almeida Sousa - RM563557
+- Paulo Estalise - RM563811
+- Gabriel Bebé Silva - RM562012
+- Emanuel Italo - RM561337
 
 ## Tecnologias utilizadas
 
@@ -31,6 +30,8 @@ Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC us
 - Bean Validation
 - Lombok
 - Oracle Database
+- Docker
+- Render
 - HTML5
 - CSS3
 
@@ -38,7 +39,7 @@ Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC us
 
 O Mercado Express é um sistema web para gerenciamento de produtos de mercado.
 
-A aplicação permite realizar um CRUD completo de produtos, com interface web em Thymeleaf e persistência dos dados em banco Oracle.
+A aplicação permite realizar um CRUD completo de produtos, com interface web em Thymeleaf, autenticação com Spring Security e persistência dos dados em banco Oracle.
 
 ## Funcionalidades
 
@@ -90,18 +91,28 @@ Senha: 123456
 
 A aplicação utiliza Oracle Database.
 
-Configuração usada no `application.properties`:
+A configuração do banco é feita por variáveis de ambiente, evitando publicar a senha no GitHub.
+
+Exemplo usado no `application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
-spring.datasource.username=RM563734
-spring.datasource.password=SENHA_DO_ORACLE
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:RM563734}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:}
 spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 ```
 
-A senha não deve ser publicada no GitHub.
+Variáveis necessárias para execução:
 
-## Como executar o projeto
+```text
+SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+SPRING_DATASOURCE_USERNAME=RM563734
+SPRING_DATASOURCE_PASSWORD=SENHA_DO_ORACLE
+```
+
+A senha do Oracle não deve ser publicada no GitHub.
+
+## Como executar o projeto localmente
 
 1. Clonar o repositório:
 
@@ -113,7 +124,7 @@ git clone https://github.com/EnzoMMaciel10/mercado-express-mvc.git
 
 3. Configurar o JDK do projeto como Java 21.
 
-4. Configurar o arquivo `application.properties` com os dados corretos do Oracle.
+4. Configurar as variáveis de ambiente com os dados do Oracle.
 
 5. Executar a classe principal:
 
@@ -126,6 +137,20 @@ Cp4Parte2MvcApplication
 ```text
 http://localhost:8080
 ```
+
+## Deploy
+
+O projeto foi publicado no Render utilizando Docker.
+
+A imagem Docker realiza o build com Maven e executa o arquivo JAR gerado pela aplicação Spring Boot.
+
+URL do deploy:
+
+```text
+https://mercado-express-mvc-0zk8.onrender.com
+```
+
+Como o deploy está no plano gratuito do Render, a aplicação pode entrar em modo de descanso após um período de inatividade. Nesse caso, o primeiro acesso pode demorar alguns segundos.
 
 ## Prints da aplicação
 
@@ -167,7 +192,6 @@ src/main/resources
 └── application.properties
 ```
 
-
 ## Segurança
 
 O projeto utiliza Spring Security.
@@ -178,4 +202,4 @@ Para cadastrar, editar ou excluir produtos, é necessário fazer login.
 
 ## Observação
 
-Este projeto foi desenvolvido com foco nos requisitos do CP4 Parte 2, utilizando MVC, Thymeleaf, JPA, Oracle e Spring Security.
+Este projeto foi desenvolvido com foco nos requisitos do CP4 Parte 2, utilizando MVC, Thymeleaf, JPA, Oracle, Spring Security e deploy em nuvem.
