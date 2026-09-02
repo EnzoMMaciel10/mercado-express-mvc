@@ -7,6 +7,7 @@ Projeto desenvolvido para o CP4 de Java Advanced, com uma aplicação Web MVC us
 - Repositório: https://github.com/EnzoMMaciel10/mercado-express-mvc
 - Deploy Render: https://mercado-express-mvc-0zk8.onrender.com
 - Prints: [prints/prints-mercado-express.pdf](prints/prints-mercado-express.pdf)
+- Vídeo de apresentação: https://youtu.be/litltjHHuE4
 
 > Observação: o deploy está em uma instância gratuita do Render. Após períodos de inatividade, a primeira abertura pode demorar alguns segundos.
 
